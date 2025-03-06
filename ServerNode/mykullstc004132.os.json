@@ -1,0 +1,27 @@
+{
+  "description": "ETL Test",
+  "parent": "[Jabee_Domain]ETL.Linux.apf",
+  "parentLoadBalancer": "ETL.Linux.apf",
+  "serverNodeType": "LINUX",
+  "tags": 
+  [
+    "ETL"
+  ],
+  "totalWeightCapacity": 500,
+  "configuration": {
+    "AgentHeartbeat": 30000,
+    "NoOfPrcss": 60,
+    "connectionTimeout": 60000,
+    "enfPort": 4445,
+    "firstDayOfWeek": 6,
+    "ftpInterval": 5000,
+    "persistence": true,
+    "persistenceRetry": true,
+    "persistenceRetryDelay": 30000,
+    "pythonCmd": "/usr/bin/python",
+    "sysoutDirectoryTree": true,
+    "sysoutMaxAgeInDays": 180
+  },
+  "customFieldValues": {
+  }
+}

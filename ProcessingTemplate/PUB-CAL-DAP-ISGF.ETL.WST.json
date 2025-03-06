@@ -1,0 +1,287 @@
+{
+  "delayedStartTime": "+0d 19h 31m",
+  "folder": "ETL",
+  "highRiskStatisticMethod": "PERCENT",
+  "highRiskStatisticPeriod": "MONTH",
+  "owner": "STKOUT",
+  "priority": "0",
+  "processingType": "WORKFLOW",
+  "statisticMethod": "MOST_FREQUENT_VALUE",
+  "statisticPeriod": "MONTH",
+  "tags": 
+  [
+    "ETL"
+  ],
+  "useScripts": true,
+  "workflowType": "STANDARD",
+  "customFieldValues": {
+  },
+  "actions": 
+  [
+    {
+      "processingActionType": "FORCE_COMPLETED",
+      "processingEventCategory": "PROCESSING",
+      "processingEventType": "PROCESSING_LOADED",
+      "processingCommand": {
+        "abortChildren": false,
+        "actionTargetType": "CRITERIA",
+        "criteria": {
+          "processingStatus": 
+          [
+            "WAITING",
+            "EXECUTING"
+          ],
+          "processingTemplate": "PUB-CAL-DAP-ISGF.ETL.WST",
+          "processingType": "WORKFLOW",
+          "timestampRelation": "LT",
+          "timestampSelector": "SAME"
+        },
+        "forbidChildrenStart": true,
+        "forceChildren": false,
+        "keepForcedStatus": true,
+        "killChildren": true,
+        "operator": "",
+        "restartType": "RESTART_FROM_BEGINNING",
+        "resultMax": 7,
+        "resultMin": 1
+      }
+    }
+  ],
+  "dependencies": 
+  [
+    {
+      "dependencyType": "RESOURCE",
+      "name": "DEFAULT.ETL.STOCK",
+      "processingStatus": "COMPLETED",
+      "processingType": "WORKFLOW",
+      "resource": "DEFAULT.ETL.STOCK",
+      "resourcePermits": "1",
+      "resourceType": "STOCK",
+      "workflowType": "STANDARD"
+    }
+  ],
+  "items": 
+  [
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB-CAL-DAP-ISGF.ETL.EFILE",
+      "priority": "0",
+      "processingTemplate": "PUB-CAL-DAP-ISGF.ETL.EFILE",
+      "processingType": "SERVICE",
+      "sensorType": "FILE_SENSOR",
+      "serverNodeType": "FILE_MANAGER",
+      "serviceType": "SENSOR",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "weight": "1"
+    },
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB01-ETL-DAP-ISGF03.ETL.JLIN",
+      "priority": "0",
+      "processingTemplate": "PUB01-ETL-DAP-ISGF03.ETL.JLIN",
+      "processingType": "TASK",
+      "serverNodeType": "LINUX",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "taskType": "AE_SHELL_SCRIPT",
+      "weight": "1",
+      "dependencies": 
+      [
+        {
+          "dependencyType": "PREDECESSOR",
+          "name": "PUB01-ETL-DAP-ISGF02.ETL.JLIN",
+          "predecessor": "PUB01-ETL-DAP-ISGF02.ETL.JLIN",
+          "processingStatus": "COMPLETED",
+          "processingType": "TASK",
+          "serverNodeType": "LINUX",
+          "statusCode": "0",
+          "statusCodeOperator": "EQ_NUM",
+          "taskType": "AE_SHELL_SCRIPT"
+        }
+      ]
+    },
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB01-ETL-DAP-ISGF05.ETL.JLIN",
+      "priority": "0",
+      "processingTemplate": "PUB01-ETL-DAP-ISGF05.ETL.JLIN",
+      "processingType": "TASK",
+      "serverNodeType": "LINUX",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "taskType": "AE_SHELL_SCRIPT",
+      "weight": "1",
+      "dependencies": 
+      [
+        {
+          "dependencyType": "PREDECESSOR",
+          "name": "PUB01-ETL-DAP-ISGF04.ETL.JLIN",
+          "predecessor": "PUB01-ETL-DAP-ISGF04.ETL.JLIN",
+          "processingStatus": "COMPLETED",
+          "processingType": "TASK",
+          "serverNodeType": "LINUX",
+          "statusCode": "0",
+          "statusCodeOperator": "EQ_NUM",
+          "taskType": "AE_SHELL_SCRIPT"
+        }
+      ]
+    },
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB01-ETL-DAP-ISGF01.ETL.JLIN",
+      "priority": "0",
+      "processingTemplate": "PUB01-ETL-DAP-ISGF01.ETL.JLIN",
+      "processingType": "TASK",
+      "serverNodeType": "LINUX",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "taskType": "AE_SHELL_SCRIPT",
+      "weight": "1",
+      "actions": 
+      [
+        {
+          "processingActionType": "FORCE_FAILED",
+          "processingEventCategory": "PROCESSING",
+          "processingEventType": "NOT_STARTED",
+          "processingCommand": {
+            "restartType": "RESTART_FROM_BEGINNING"
+          }
+        }
+      ],
+      "dependencies": 
+      [
+        {
+          "dependencyType": "PREDECESSOR",
+          "name": "PUB-CAL-DAP-ISGF.ETL.EFILE",
+          "predecessor": "PUB-CAL-DAP-ISGF.ETL.EFILE",
+          "processingStatus": "COMPLETED",
+          "processingType": "SERVICE",
+          "serverNodeType": "FILE_MANAGER",
+          "statusCode": "0",
+          "statusCodeOperator": "EQ_NUM"
+        }
+      ]
+    },
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB01-ETL-DAP-ISGF06.ETL.JLIN",
+      "priority": "0",
+      "processingTemplate": "PUB01-ETL-DAP-ISGF06.ETL.JLIN",
+      "processingType": "TASK",
+      "serverNodeType": "LINUX",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "taskType": "AE_SHELL_SCRIPT",
+      "weight": "1",
+      "dependencies": 
+      [
+        {
+          "dependencyType": "PREDECESSOR",
+          "name": "PUB01-ETL-DAP-ISGF05.ETL.JLIN",
+          "predecessor": "PUB01-ETL-DAP-ISGF05.ETL.JLIN",
+          "processingStatus": "COMPLETED",
+          "processingType": "TASK",
+          "serverNodeType": "LINUX",
+          "statusCode": "0",
+          "statusCodeOperator": "EQ_NUM",
+          "taskType": "AE_SHELL_SCRIPT"
+        }
+      ]
+    },
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB01-ETL-DAP-ISGF04.ETL.JLIN",
+      "priority": "0",
+      "processingTemplate": "PUB01-ETL-DAP-ISGF04.ETL.JLIN",
+      "processingType": "TASK",
+      "serverNodeType": "LINUX",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "taskType": "AE_SHELL_SCRIPT",
+      "weight": "1",
+      "dependencies": 
+      [
+        {
+          "dependencyType": "PREDECESSOR",
+          "name": "PUB01-ETL-DAP-ISGF03.ETL.JLIN",
+          "predecessor": "PUB01-ETL-DAP-ISGF03.ETL.JLIN",
+          "processingStatus": "COMPLETED",
+          "processingType": "TASK",
+          "serverNodeType": "LINUX",
+          "statusCode": "0",
+          "statusCodeOperator": "EQ_NUM",
+          "taskType": "AE_SHELL_SCRIPT"
+        }
+      ]
+    },
+    {
+      "folder": "ETL",
+      "highRiskStatisticMethod": "PERCENT",
+      "highRiskStatisticPeriod": "MONTH",
+      "name": "PUB01-ETL-DAP-ISGF02.ETL.JLIN",
+      "priority": "0",
+      "processingTemplate": "PUB01-ETL-DAP-ISGF02.ETL.JLIN",
+      "processingType": "TASK",
+      "serverNodeType": "LINUX",
+      "statisticMethod": "AVERAGE",
+      "statisticPeriod": "MONTH",
+      "tags": 
+      [
+        "ETL"
+      ],
+      "taskType": "AE_SHELL_SCRIPT",
+      "weight": "1",
+      "dependencies": 
+      [
+        {
+          "dependencyType": "PREDECESSOR",
+          "name": "PUB01-ETL-DAP-ISGF01.ETL.JLIN",
+          "predecessor": "PUB01-ETL-DAP-ISGF01.ETL.JLIN",
+          "processingStatus": "COMPLETED",
+          "processingType": "TASK",
+          "serverNodeType": "LINUX",
+          "statusCode": "0",
+          "statusCodeOperator": "EQ_NUM",
+          "taskType": "AE_SHELL_SCRIPT"
+        }
+      ]
+    }
+  ]
+}

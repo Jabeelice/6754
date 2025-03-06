@@ -1,0 +1,53 @@
+{
+  "folder": "ETL",
+  "highRiskStatisticMethod": "PERCENT",
+  "highRiskStatisticPeriod": "MONTH",
+  "node": "ETL.Linux.apf",
+  "owner": "STKOUT",
+  "priority": "0",
+  "processingType": "TASK",
+  "resultMapping": "KILLED2COMPLETED.ETL.RMAP",
+  "serverNodeType": "LINUX",
+  "statisticMethod": "AVERAGE",
+  "statisticPeriod": "MONTH",
+  "tags": 
+  [
+    "ETL"
+  ],
+  "taskType": "AE_SHELL_SCRIPT",
+  "useScripts": true,
+  "customFieldValues": {
+  },
+  "processingCommand": {
+    "script": "${GAPDIR.ETL.VAR}/PUB01-ETL-DAP-SPBG06.sh"
+  },
+  "actions": 
+  [
+    {
+      "processingActionType": "KILL",
+      "processingEventCategory": "PROCESSING",
+      "processingEventType": "PROCESSING_READY",
+      "processingCommand": {
+        "actionTargetType": "CRITERIA",
+        "criteria": {
+          "processingStatus": 
+          [
+            "WAITING",
+            "EXECUTING"
+          ],
+          "processingType": "TASK",
+          "showAdvancedCriteria": true,
+          "timestampRelation": "LE",
+          "timestampSelector": "SAME",
+          "workflowTemplate": "${parentTemplate}",
+          "workflowTemplateItem": "${template}"
+        },
+        "keepForcedStatus": "true",
+        "operator": "",
+        "restartType": "RESTART_FROM_BEGINNING",
+        "resultMax": 7,
+        "resultMin": 1
+      }
+    }
+  ]
+}

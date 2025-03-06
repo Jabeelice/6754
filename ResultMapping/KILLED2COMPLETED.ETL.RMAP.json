@@ -1,0 +1,27 @@
+{
+  "definition": 
+  [
+    {
+      "condition": {
+        "criteria": 
+        [
+          {
+            "fieldName": "exitCode",
+            "operator": "EQ",
+            "value": "-1"
+          }
+        ],
+        "operator": "AND"
+      },
+      "processingStatus": "COMPLETED",
+      "statusCode": "-1",
+      "statusMessage": "Killed by new iteration"
+    }
+  ],
+  "description": "Change status from killed (-1) to Completed for ETL jobs.",
+  "folder": "ETL",
+  "tags": 
+  [
+    "ETL"
+  ]
+}

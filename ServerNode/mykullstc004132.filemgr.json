@@ -1,0 +1,27 @@
+{
+  "description": "ETL",
+  "folder": "ETL",
+  "parent": "[Jabee_Domain]ETL.Filemgr.apf",
+  "parentLoadBalancer": "ETL.Filemgr.apf",
+  "serverNodeType": "FILE_MANAGER",
+  "tags": 
+  [
+    "ETL"
+  ],
+  "totalWeightCapacity": 300,
+  "configuration": {
+    "AgentHeartbeat": 30000,
+    "NoOfPrcss": 60,
+    "connectionTimeout": 60000,
+    "enfPort": 4445,
+    "firstDayOfWeek": 6,
+    "ftpInterval": 5000,
+    "persistence": true,
+    "persistenceRetry": true,
+    "persistenceRetryDelay": 30000,
+    "sysoutDirectoryTree": true,
+    "sysoutMaxAgeInDays": 180
+  },
+  "customFieldValues": {
+  }
+}

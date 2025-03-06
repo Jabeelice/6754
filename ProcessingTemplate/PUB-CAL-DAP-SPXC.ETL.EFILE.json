@@ -1,0 +1,70 @@
+{
+  "folder": "ETL",
+  "highRiskStatisticMethod": "PERCENT",
+  "highRiskStatisticPeriod": "MONTH",
+  "node": "ETL.Filemgr.apf",
+  "owner": "jakub.szeliga@infinitedata.com",
+  "priority": "0",
+  "processingType": "SERVICE",
+  "resultMapping": "NOFILE-OR-KILLED2COMPLETED.ETL.RMAP",
+  "sensorType": "FILE_SENSOR",
+  "serverNodeType": "FILE_MANAGER",
+  "serviceType": "SENSOR",
+  "statisticMethod": "AVERAGE",
+  "statisticPeriod": "MONTH",
+  "tags": 
+  [
+    "ETL"
+  ],
+  "customFieldValues": {
+  },
+  "processingCommand": {
+    "checkNumberOfFiles": true,
+    "directory": "/appl/ETL/ftp/ftpxcibs",
+    "file": "XC10_IBS_OC_02_*.tar.gz",
+    "ifNoFilesFound": "FAIL_AFTER_LAST_CHECK",
+    "maxNumberOfFiles": "",
+    "minNumberOfFiles": "1",
+    "orderType": "DATE_ASCENDING",
+    "patternMode": "GLOB",
+    "reactionMode": "FILE_FOUND",
+    "reactionType": "COMPLETE",
+    "serviceMode": {
+      "duration": 86390000,
+      "interval": 60000,
+      "runMode": "FOR"
+    },
+    "sourceFileAction": "SKIP_ARCHIVE",
+    "sourceType": "LOCAL_FILE_SYSTEM",
+    "targetType": "LOCAL_FILE_SYSTEM"
+  },
+  "actions": 
+  [
+    {
+      "processingActionType": "RESTART",
+      "processingEventCategory": "PROCESSING",
+      "processingEventType": "PROCESSING_FAILED",
+      "condition": {
+        "criteria": 
+        [
+          {
+            "fieldName": "exitCode",
+            "operator": "EQ",
+            "value": "-2"
+          }
+        ],
+        "operator": "AND"
+      },
+      "processingCommand": {
+        "actionTargetType": "SELF",
+        "keepForcedStatus": true,
+        "restartCounter": 1,
+        "restartDelay": 600000,
+        "restartDelayMode": "FINISH_TO_START",
+        "restartFailedOnly": true,
+        "restartMode": "COUNTER",
+        "restartType": "RESTART_FROM_BEGINNING"
+      }
+    }
+  ]
+}

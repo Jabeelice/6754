@@ -1,0 +1,27 @@
+{
+  "folder": "ETL",
+  "highRiskStatisticMethod": "PERCENT",
+  "highRiskStatisticPeriod": "MONTH",
+  "node": "ETL.Linux.apf",
+  "owner": "stkout",
+  "postScript": ":INC JOB-POSTPROCESS.TWS.INCL\n",
+  "preScript": ":INC JOB-PREPROCESS.TWS.INCL\n",
+  "priority": "0",
+  "processingType": "TASK",
+  "resultMapping": "KILLED2COMPLETED.ETL.RMAP",
+  "serverNodeType": "LINUX",
+  "statisticMethod": "AVERAGE",
+  "statisticPeriod": "MONTH",
+  "tags": 
+  [
+    "ETL",
+    "P1"
+  ],
+  "taskType": "AE_SHELL_SCRIPT",
+  "useScripts": true,
+  "customFieldValues": {
+  },
+  "processingCommand": {
+    "script": "${KVS::CONFIGURATION.ETL.DSKV(GAPDIR)}/PUB01-ETL-DAP-${EtlType}-AP_Staging_Solution.sh"
+  }
+}

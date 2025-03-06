@@ -1,0 +1,42 @@
+{
+  "definition": 
+  [
+    {
+      "condition": {
+        "criteria": 
+        [
+          {
+            "fieldName": "exitCode",
+            "operator": "EQ",
+            "value": "-1"
+          }
+        ],
+        "operator": "AND"
+      },
+      "processingStatus": "COMPLETED",
+      "statusCode": "-1",
+      "statusMessage": "Killed by new iteration"
+    },
+    {
+      "condition": {
+        "criteria": 
+        [
+          {
+            "fieldName": "exitCode",
+            "operator": "EQ_NUM",
+            "value": "300"
+          }
+        ],
+        "operator": "AND"
+      },
+      "processingStatus": "COMPLETED",
+      "statusCode": "300",
+      "statusMessage": "No files are available for processing"
+    }
+  ],
+  "folder": "ETL",
+  "tags": 
+  [
+    "ETL"
+  ]
+}
